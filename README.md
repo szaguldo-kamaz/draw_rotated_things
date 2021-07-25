@@ -20,3 +20,7 @@ Stir up some sticks and discs:
 Spin some other things:
 
 ![Demo for draw_rotated_things](https://user-images.githubusercontent.com/86873213/126593953-aa3df8fd-531f-4710-a9eb-5c784b376ea7.gif)
+
+Or need a radar screen?
+
+![Radar screen](https://user-images.githubusercontent.com/86873213/126887024-e2dbe3b8-3687-434b-b0f9-abbaf380d335.gif)
