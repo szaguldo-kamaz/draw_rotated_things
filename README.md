@@ -1,5 +1,5 @@
 # draw_rotated_things
-Simple code to draw rotated things with PySimpleGUI.
+Simple code to draw rotated rectangles, lines and circles with PySimpleGUI.
 
 
 Rotate rectangles or lines around their own centers.
@@ -20,6 +20,10 @@ Stir up some sticks and discs:
 Spin some other things:
 
 ![Demo for draw_rotated_things](https://user-images.githubusercontent.com/86873213/126593953-aa3df8fd-531f-4710-a9eb-5c784b376ea7.gif)
+
+Check the time on the 1980's TV clock of Magyar Televizio:
+
+![Magyar Televizio clock](https://user-images.githubusercontent.com/86873213/126935440-a8725088-5f44-4297-be04-19363667b514.gif)
 
 Or need a radar screen?
 
