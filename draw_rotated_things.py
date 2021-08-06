@@ -10,7 +10,32 @@ import math
 
 # TODO: integrate with draw_rectangle, etc. as parameters like angle/rotcentangle/rotcentdist
 
-# TODO: could be easily extended to support polygons...
+def draw_rotated_polygon(graph, polycoords, polycenter, angle, outlinecolor, rotcentangle=0, rotcentdist=0, fill=True, fillcolor=None, linewidth=1):
+
+    cosangle=math.cos(angle);
+    sinangle=math.sin(angle);
+
+    cosangle_cd=math.cos(rotcentangle);
+    sinangle_cd=math.sin(rotcentangle);
+    coord_cd=(polycenter[0],polycenter[1]-rotcentdist);
+
+    coord_rot=[];
+    for c in range(0,len(polycoords)):
+        temp=[ (polycoords[c][0]-polycenter[0])*cosangle - (polycoords[c][1]-polycenter[1])*sinangle + polycenter[0],
+               (polycoords[c][0]-polycenter[0])*sinangle + (polycoords[c][1]-polycenter[1])*cosangle + polycenter[1] ];
+        coord_rot.append(
+              [ (temp[0]-coord_cd[0])*cosangle_cd - (temp[1]-coord_cd[1])*sinangle_cd + polycenter[0],
+                (temp[0]-coord_cd[0])*sinangle_cd + (temp[1]-coord_cd[1])*cosangle_cd + polycenter[1] ] );
+
+    if fill:
+        if fillcolor==None:
+            fillcolor=outlinecolor;
+        return graph.draw_polygon(coord_rot, line_color=outlinecolor, fill_color=fillcolor);
+    else:
+        coord_rot.append(coord_rot[0]);
+        return graph.draw_lines(coord_rot, width=linewidth, color=outlinecolor);
+
+
 def draw_rotated_rectangle(graph, rectcoord, angle, outlinecolor, rotcentangle=0, rotcentdist=0, fill=True, fillcolor=None, linewidth=1):
 
     coord=( rectcoord[0], (rectcoord[1][0],rectcoord[0][1]), rectcoord[1], (rectcoord[0][0],rectcoord[1][1]) );
