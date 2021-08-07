@@ -42,13 +42,38 @@ graph.draw_text("kamaz", [graphsize[0]-22, graphsize[1]-16],color='#A0A0A0', fon
 main_angle=0;
 changed=True;
 
+polycoords=(
+ (graphsize[0]/2-30,graphsize[1]/2+70),
+ (graphsize[0]/2+25,graphsize[1]/2+80),
+ (graphsize[0]/2+40,graphsize[1]/2+100),
+ (graphsize[0]/2-50,graphsize[1]/2+190),
+ (graphsize[0]/2-25,graphsize[1]/2+130),
+);
+# use the center of the bounding rectangle as the rotation center to keep it simple
+xs=[xy[0] for xy in polycoords];
+ys=[xy[1] for xy in polycoords];
+polycenter=( (max(xs)-min(xs))/2+min(xs), (max(ys)-min(ys))/2+min(ys) );
+
+tricoords=((graphsize[0]/2-25,graphsize[1]/2-160),(graphsize[0]/2+25,graphsize[1]/2-160),(graphsize[0]/2,graphsize[1]/2-85));
+# use the center of the bounding rectangle as the rotation center to keep it simple
+xs=[xy[0] for xy in tricoords];
+ys=[xy[1] for xy in tricoords];
+tricenter=( (max(xs)-min(xs))/2+min(xs), (max(ys)-min(ys))/2+min(ys) );
+# or use the centroid of the triangle as the rotation center
+#tricenter=( (tricoords[0][0]+tricoords[1][0]+tricoords[2][0])/3, (tricoords[0][1]+tricoords[1][1]+tricoords[2][1])/3 );
+
+
 while True:
 
     if changed:
         changed=False;
-        # rectangles in the middle
+        # rectangles inside the circle
         rect_fill  =draw_rotated_rectangle( graph, [(graphsize[0]/2+75,graphsize[1]/2-50),(graphsize[0]/2+175,graphsize[1]/2+50)], main_angle, '#00DC80', fill=True, linewidth=5, fillcolor='#00BB40');
         rect_nofill=draw_rotated_rectangle( graph, [(graphsize[0]/2-150,graphsize[1]/2-50),(graphsize[0]/2-100 ,graphsize[1]/2+50)], main_angle, '#80DC00', fill=False, linewidth=5);
+        # triangle inside the circle
+        tri_nofill =draw_rotated_polygon( graph, tricoords, tricenter, main_angle, 'green', fill=False, linewidth=3);
+        # random shape inside the circle
+        poly_nofill=draw_rotated_polygon( graph, polycoords, polycenter, main_angle, 'red', fill=False, linewidth=3);
         # rectangles on the circle - rotating around their centers
         rect_fill_dr  =draw_rotated_rectangle( graph, [(graphsize[0]/2-25,graphsize[1]/2-25),(graphsize[0]/2+25,graphsize[1]/2+25)], 0, '#0080DC', fill=True, linewidth=5, fillcolor='#0080DC', rotcentdist=250, rotcentangle=main_angle-math.pi/4);
         rect_nofill_dr=draw_rotated_rectangle( graph, [(graphsize[0]/2-25,graphsize[1]/2-25),(graphsize[0]/2+25,graphsize[1]/2+25)], 0, '#8000DC', fill=False, linewidth=5, rotcentdist=250, rotcentangle=main_angle+math.pi/4);
@@ -85,6 +110,8 @@ while True:
     if changed:
         graph.delete_figure(rect_fill);
         graph.delete_figure(rect_nofill);
+        graph.delete_figure(poly_nofill);
+        graph.delete_figure(tri_nofill);
         graph.delete_figure(rect_fill_dr);
         graph.delete_figure(rect_nofill_dr);
         graph.delete_figure(rect_fill_dr_st);
