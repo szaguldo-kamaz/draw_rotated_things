@@ -1,4 +1,4 @@
-# draw_rotated_things v0.1
+# draw_rotated_things v0.2
 # for use with PySimpleGUI
 # see examples (Demo_draw_rotated_*)
 #

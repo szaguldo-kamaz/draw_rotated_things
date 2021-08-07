@@ -1,4 +1,4 @@
-# Demo_draw_rotated_things v0.1
+# Demo_draw_rotated_things v0.2
 # using draw_rotated_things
 #
 # author: David Vincze
