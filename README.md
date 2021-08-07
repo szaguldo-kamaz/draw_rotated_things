@@ -18,8 +18,7 @@ Stir up some sticks and discs:
 ![Spinning sticks and flying discs](https://user-images.githubusercontent.com/86873213/126855796-f6f1f9c5-b294-46b4-aee5-1cc55299eaae.gif)
 
 Spin some other things:
-
-![Demo for draw_rotated_things](https://user-images.githubusercontent.com/86873213/126593953-aa3df8fd-531f-4710-a9eb-5c784b376ea7.gif)
+![Demo for draw_rotated_things](https://user-images.githubusercontent.com/86873213/128590268-6af95ce8-ee22-46de-ac05-acb192c9f41c.gif)
 
 Check the time on the 1980's TV clock of Magyar Televizio:
 
